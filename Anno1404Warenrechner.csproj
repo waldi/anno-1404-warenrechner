@@ -46,14 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Calculators\NeedsCalculator.cs" />
+    <Compile Include="Constants\GameAddresses.cs" />
+    <Compile Include="Constants\PopulationOffsets.cs" />
+    <Compile Include="Helpers\MemoryHelper.cs" />
+    <Compile Include="Helpers\PopulationReader.cs" />
+    <Compile Include="Structs\Needs.cs" />
+    <Compile Include="Structs\Population.cs" />
+    <Compile Include="Warenrechner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Warenrechner.Designer.cs">
+      <DependentUpon>Warenrechner.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Warenrechner.resx">
+      <DependentUpon>Warenrechner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +72,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +86,69 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconBier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconBrillen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconBrokatgewaender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconBrot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconBuecher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconDatteln.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconDuftwasser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconFisch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconFleisch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconGewuerze.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconKaffee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconKerzenleuchter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconLederwaemse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconLeinenkutten.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconMarzipan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconMilch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconMost.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconPelzmaentel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconPerlenketten.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconTeppiche.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconWein.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
