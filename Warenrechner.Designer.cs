@@ -94,6 +94,8 @@
             this.buttonLoadNeeds = new System.Windows.Forms.Button();
             this.labelAnnoProcess = new System.Windows.Forms.Label();
             this.textBoxProcessName = new System.Windows.Forms.TextBox();
+            this.checkBoxPeriodicCheck = new System.Windows.Forms.CheckBox();
+            this.labelError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -774,12 +776,34 @@
             this.textBoxProcessName.TabIndex = 18;
             this.textBoxProcessName.Text = "Addon.exe";
             // 
+            // checkBoxPeriodicCheck
+            // 
+            this.checkBoxPeriodicCheck.AutoSize = true;
+            this.checkBoxPeriodicCheck.Location = new System.Drawing.Point(457, 129);
+            this.checkBoxPeriodicCheck.Name = "checkBoxPeriodicCheck";
+            this.checkBoxPeriodicCheck.Size = new System.Drawing.Size(120, 17);
+            this.checkBoxPeriodicCheck.TabIndex = 19;
+            this.checkBoxPeriodicCheck.Text = "Check every minute";
+            this.checkBoxPeriodicCheck.UseVisualStyleBackColor = true;
+            this.checkBoxPeriodicCheck.CheckedChanged += new System.EventHandler(this.checkBoxPeriodicCheck_CheckedChanged);
+            // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.Location = new System.Drawing.Point(601, 130);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(16, 13);
+            this.labelError.TabIndex = 20;
+            this.labelError.Text = "...";
+            // 
             // Warenrechner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(904, 182);
+            this.Controls.Add(this.labelError);
+            this.Controls.Add(this.checkBoxPeriodicCheck);
             this.Controls.Add(this.textBoxProcessName);
             this.Controls.Add(this.labelAnnoProcess);
             this.Controls.Add(this.buttonLoadNeeds);
@@ -923,6 +947,8 @@
         private System.Windows.Forms.Button buttonLoadNeeds;
         private System.Windows.Forms.Label labelAnnoProcess;
         private System.Windows.Forms.TextBox textBoxProcessName;
+        private System.Windows.Forms.CheckBox checkBoxPeriodicCheck;
+        private System.Windows.Forms.Label labelError;
     }
 }
 

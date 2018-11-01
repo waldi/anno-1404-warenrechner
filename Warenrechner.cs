@@ -5,9 +5,20 @@ namespace Anno1404Warenrechner
 {
     public partial class Warenrechner : Form
     {
+        Timer periodicCheckTimer = new Timer();
         public Warenrechner()
         {
             InitializeComponent();
+            periodicCheckTimer.Interval = 60000;
+            periodicCheckTimer.Tick += PeriodicCheckTimer_Tick;
+
+            labelError.Text = "";
+            labelError.ForeColor = System.Drawing.Color.Red;
+        }
+
+        private void PeriodicCheckTimer_Tick(object sender, EventArgs e)
+        {
+            buttonLoadNeeds.PerformClick();
         }
 
         private void Form1_Load(object sender, EventArgs e) { }
@@ -51,16 +62,28 @@ namespace Anno1404Warenrechner
                 var needs = NeedsCalculator.CalculateNeeds(population);
 
                 this.RenderNeeds(needs);
+                labelError.Text = "";
             }
             catch (Exception exception)
             {
                 this.RenderNeeds(null);
 
-                MessageBox.Show(exception.Message, "Failed to load data.");
+                labelError.Text = "Failed to load data.";
             }
         }
 
-
-        
+        private void checkBoxPeriodicCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if (cb.Checked)
+            {
+                periodicCheckTimer.Start();
+                buttonLoadNeeds.PerformClick();
+            }
+            else
+            {
+                periodicCheckTimer.Stop();
+            }
+        }
     }
 }
