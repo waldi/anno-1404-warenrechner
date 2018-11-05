@@ -96,6 +96,8 @@
             this.textBoxProcessName = new System.Windows.Forms.TextBox();
             this.checkBoxPeriodicCheck = new System.Windows.Forms.CheckBox();
             this.labelError = new System.Windows.Forms.Label();
+            this.textBoxPeriodicCheckInterval = new System.Windows.Forms.TextBox();
+            this.labelSeconds = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -781,20 +783,42 @@
             this.checkBoxPeriodicCheck.AutoSize = true;
             this.checkBoxPeriodicCheck.Location = new System.Drawing.Point(457, 129);
             this.checkBoxPeriodicCheck.Name = "checkBoxPeriodicCheck";
-            this.checkBoxPeriodicCheck.Size = new System.Drawing.Size(120, 17);
+            this.checkBoxPeriodicCheck.Size = new System.Drawing.Size(86, 17);
             this.checkBoxPeriodicCheck.TabIndex = 19;
-            this.checkBoxPeriodicCheck.Text = "Check every minute";
+            this.checkBoxPeriodicCheck.Text = "Check every";
             this.checkBoxPeriodicCheck.UseVisualStyleBackColor = true;
             this.checkBoxPeriodicCheck.CheckedChanged += new System.EventHandler(this.checkBoxPeriodicCheck_CheckedChanged);
             // 
             // labelError
             // 
             this.labelError.AutoSize = true;
-            this.labelError.Location = new System.Drawing.Point(601, 130);
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(643, 130);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(16, 13);
             this.labelError.TabIndex = 20;
             this.labelError.Text = "...";
+            // 
+            // textBoxPeriodicCheckInterval
+            // 
+            this.textBoxPeriodicCheckInterval.Enabled = false;
+            this.textBoxPeriodicCheckInterval.Location = new System.Drawing.Point(538, 127);
+            this.textBoxPeriodicCheckInterval.MaxLength = 5;
+            this.textBoxPeriodicCheckInterval.Name = "textBoxPeriodicCheckInterval";
+            this.textBoxPeriodicCheckInterval.Size = new System.Drawing.Size(35, 20);
+            this.textBoxPeriodicCheckInterval.TabIndex = 21;
+            this.textBoxPeriodicCheckInterval.Text = "60";
+            this.textBoxPeriodicCheckInterval.TextChanged += new System.EventHandler(this.textBoxPeriodicCheckInterval_TextChanged);
+            this.textBoxPeriodicCheckInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPeriodicCheckInterval_KeyPress);
+            // 
+            // labelSeconds
+            // 
+            this.labelSeconds.AutoSize = true;
+            this.labelSeconds.Location = new System.Drawing.Point(573, 130);
+            this.labelSeconds.Name = "labelSeconds";
+            this.labelSeconds.Size = new System.Drawing.Size(47, 13);
+            this.labelSeconds.TabIndex = 22;
+            this.labelSeconds.Text = "seconds";
             // 
             // Warenrechner
             // 
@@ -802,6 +826,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(904, 182);
+            this.Controls.Add(this.labelSeconds);
+            this.Controls.Add(this.textBoxPeriodicCheckInterval);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.checkBoxPeriodicCheck);
             this.Controls.Add(this.textBoxProcessName);
@@ -949,6 +975,8 @@
         private System.Windows.Forms.TextBox textBoxProcessName;
         private System.Windows.Forms.CheckBox checkBoxPeriodicCheck;
         private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.TextBox textBoxPeriodicCheckInterval;
+        private System.Windows.Forms.Label labelSeconds;
     }
 }
 

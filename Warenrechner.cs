@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace Anno1404Warenrechner
@@ -9,16 +9,14 @@ namespace Anno1404Warenrechner
         public Warenrechner()
         {
             InitializeComponent();
-            periodicCheckTimer.Interval = 60000;
-            periodicCheckTimer.Tick += PeriodicCheckTimer_Tick;
 
-            labelError.Text = "";
-            labelError.ForeColor = System.Drawing.Color.Red;
+            this.periodicCheckTimer.Tick += PeriodicCheckTimer_Tick;
+            this.labelError.Text = "";
         }
 
         private void PeriodicCheckTimer_Tick(object sender, EventArgs e)
         {
-            buttonLoadNeeds.PerformClick();
+            this.calcUpdateNeedsUi();
         }
 
         private void Form1_Load(object sender, EventArgs e) { }
@@ -56,33 +54,76 @@ namespace Anno1404Warenrechner
 
         private void buttonLoadNeeds_Click(object sender, EventArgs eventArgs)
         {
+            this.calcUpdateNeedsUi();
+        }
+
+        private void calcUpdateNeedsUi()
+        {
             try
             {
                 var population = PopulationReader.ReadPopulation(this.textBoxProcessName.Text);
                 var needs = NeedsCalculator.CalculateNeeds(population);
 
                 this.RenderNeeds(needs);
-                labelError.Text = "";
+                this.labelError.Text = "";
             }
             catch (Exception exception)
             {
                 this.RenderNeeds(null);
 
-                labelError.Text = "Failed to load data.";
+                this.labelError.Text = "Failed to load data.";
+            }
+        }
+
+        private void initStartTimer()
+        {
+            int interval = 0;
+            try
+            {
+                interval = Convert.ToInt32(textBoxPeriodicCheckInterval.Text) * 1000;
+            }
+            catch (Exception exception)
+            {
+                this.labelError.Text = "Invalid interval.";
+                return;
+            }
+
+            if (interval > 0)
+            {
+                this.periodicCheckTimer.Stop();
+                this.periodicCheckTimer.Interval = interval;
+                this.periodicCheckTimer.Start();
             }
         }
 
         private void checkBoxPeriodicCheck_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox cb = sender as CheckBox;
-            if (cb.Checked)
+            var checkBox = sender as CheckBox;
+            if (checkBox.Checked)
             {
-                periodicCheckTimer.Start();
-                buttonLoadNeeds.PerformClick();
+                this.textBoxPeriodicCheckInterval.Enabled = true;
+                this.initStartTimer();
+                this.calcUpdateNeedsUi();
             }
             else
             {
-                periodicCheckTimer.Stop();
+                this.textBoxPeriodicCheckInterval.Enabled = false;
+                this.periodicCheckTimer.Stop();
+            }
+        }
+
+        private void textBoxPeriodicCheckInterval_TextChanged(object sender, EventArgs e)
+        {
+            this.initStartTimer();
+            this.calcUpdateNeedsUi();
+        }
+
+        private void textBoxPeriodicCheckInterval_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Cancel input if it is not a digit
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }
